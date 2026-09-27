@@ -27,12 +27,13 @@ export class SearchResultsPage {
     await this.page.waitForURL(/sort=sortPrice/);
   }
 
-  // El punto decimal vive en un <span class="invisible">, así que innerText
-  // nunca lo incluye (respeta la visibilidad CSS). El precio llega como
-  // "$39900" en vez de "$399.00"; insertamos el punto antes de los últimos
-  // 2 dígitos, que siempre son los centavos.
-  private formatPrice(rawPrice: string): string {
-    return rawPrice.replace(/(\d{2})$/, '.$1');
+  /**
+   * Limpia el texto recuperado del DOM manteniendo números y el punto decimal.
+   */
+  private cleanPrice(rawPrice: string): string {
+    if (!rawPrice) return '0.00';
+    // Mantiene dígitos y el punto decimal
+    return rawPrice.replace(/[^0-9.]/g, '');
   }
 
   async getFirstNProducts(n: number): Promise<ProductInfo[]> {
@@ -48,14 +49,14 @@ export class SearchResultsPage {
 
       const name = await card.locator('h3').first().innerText();
 
-      const rawPrice = await card
-        .locator(`[data-testid="${productId}-price"] .text-price-primary`)
-        .first()
-        .innerText();
+      // Usamos textContent() en lugar de innerText() para extraer también 
+      // el texto de los elementos con CSS invisible (como el punto decimal).
+      const priceElement = card.locator(`[data-testid="${productId}-price"] .text-price-primary`).first();
+      const rawPrice = (await priceElement.textContent()) || '';
 
       results.push({
         name: name.trim(),
-        price: this.formatPrice(rawPrice.replace(/\s+/g, '')),
+        price: this.cleanPrice(rawPrice),
       });
     }
 

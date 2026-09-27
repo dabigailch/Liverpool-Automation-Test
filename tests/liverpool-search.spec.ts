@@ -11,11 +11,13 @@ test('buscar PS5, filtrar por blanco, ordenar por precio, extraer top 5 y valida
   await homePage.closeCookieBannerIfPresent();
   await homePage.search('playstation 5');
 
-  // Empezamos a "escuchar" la respuesta de red ANTES de disparar las acciones
-  // que la provocan (filtrar y ordenar), para no perder la respuesta.
+  // 1. Aplicamos el filtro por color
+  await resultsPage.filterByColor(/^Blanco \(\d+\)$/);
+
+  // 2. Iniciamos la escucha de red JUSTO ANTES de ordenar por precio para capturar la respuesta final
   const apiResponsePromise = watchForSearchApiResponse(page);
 
-  await resultsPage.filterByColor(/^Blanco \(\d+\)$/);
+  // 3. Aplicamos la ordenación
   await resultsPage.sortByPriceLowToHigh();
 
   const apiResponse = await apiResponsePromise;
