@@ -1,17 +1,18 @@
-# Liverpool QA Automation Challenge - E2E Framework
+# Liverpool.com.mx — PS5 Search Flow Automation
 
-Suite de pruebas automatizadas End-to-End (E2E) para la plataforma de Liverpool con Playwright y TypeScript.
+[![E2E Tests](https://github.com/dabigailch/correccion-liverpool-automation-test/actions/workflows/playwright.yml/badge.svg)](https://github.com/dabigailch/correccion-liverpool-automation-test/actions/workflows/playwright.yml)
 
----
+Playwright Test (JavaScript) suite: search → filter by color → sort by
+price → extract top 5 results → cross-validate against the intercepted
+network response, plus reporting, CI, and optional bonus checks.
 
 ## Requisitos
-- Node.js (v18 o superior)
-- npm
 
----
+- Node.js ≥ 18
+- [pnpm](https://pnpm.io/) (`npm i -g pnpm` si no lo tienes instalado)
 
 ## Instalación
 
-1. Clona este repositorio e instala las dependencias:
-   ```bash
-   npm ci
+```bash
+pnpm install
+pnpm exec playwright install --with-deps chromium firefox webkit
