@@ -66,4 +66,4 @@ TEST_STRATEGY.md             # Documento de estrategia y decisiones de diseño
 
 Cada push/PR a `main` dispara el workflow de GitHub Actions, que instala dependencias, valida tipos, instala navegadores, corre la suite en modo headless y sube el reporte HTML como artefacto descargable.
 
-Ver el historial de corridas: [Actions → Playwright Tests](https://github.com/dabigailch/correccion-liverpool-automation-test/actions/workflows/playwright.yml)
+Ver el historial de corridas: [Actions → Playwright Tests](https://github.com/dabigailch/correccion-liverpool-automation-test/actions/workflows/test.yml)
