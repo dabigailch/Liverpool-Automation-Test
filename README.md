@@ -1,6 +1,6 @@
 # Liverpool.com.mx — QA Automation Challenge (E2E Playwright Framework)
 
-[![E2E Tests](https://github.com/dabigailch/correccion-liverpool-automation-test/actions/workflows/playwright.yml/badge.svg)](https://github.com/dabigailch/correccion-liverpool-automation-test/actions/workflows/playwright.yml)
+[![E2E Tests](https://github.com/dabigailch/correccion-liverpool-automation-test/actions/workflows/test.yml/badge.svg)](https://github.com/dabigailch/correccion-liverpool-automation-test/actions/workflows/test.yml)
 
 Suite de pruebas automatizadas E2E para la plataforma de **Liverpool.com.mx** desarrollada con **Playwright** y **TypeScript**.
 
