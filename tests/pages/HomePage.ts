@@ -17,7 +17,10 @@ export class HomePage {
   }
 
   async goto() {
-    await this.page.goto('https://www.liverpool.com.mx/');
+    await this.page.goto('https://www.liverpool.com.mx/', {
+      waitUntil: 'domcontentloaded',
+      timeout: 60000,
+    });
   }
 
   async closeCookieBannerIfPresent() {
