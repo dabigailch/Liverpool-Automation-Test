@@ -1,18 +1,22 @@
-# Liverpool.com.mx — PS5 Search Flow Automation
+# Liverpool.com.mx — QA Automation Challenge (E2E Playwright Framework)
 
 [![E2E Tests](https://github.com/dabigailch/correccion-liverpool-automation-test/actions/workflows/playwright.yml/badge.svg)](https://github.com/dabigailch/correccion-liverpool-automation-test/actions/workflows/playwright.yml)
 
-Playwright Test (JavaScript) suite: search → filter by color → sort by
-price → extract top 5 results → cross-validate against the intercepted
-network response, plus reporting, CI, and optional bonus checks.
+Suite de pruebas automatizadas E2E para la plataforma de **Liverpool.com.mx** desarrollada con **Playwright** y **TypeScript**.
 
-## Requisitos
+El proyecto automatiza el flujo completo de búsqueda de productos (*PlayStation 5*), filtrado por color (*Blanco*), ordenamiento por precio (*Mayor a menor*), extracción de los primeros 5 resultados y validación cruzada de datos contra la respuesta interceptada de la red (API).
+
+---
+
+## 🛠️ Requisitos
 
 - Node.js ≥ 18
-- [pnpm](https://pnpm.io/) (`npm i -g pnpm` si no lo tienes instalado)
+- npm (incluido con Node.js)
 
-## Instalación
+---
+
+## 🚀 Instalación
 
 ```bash
-pnpm install
-pnpm exec playwright install --with-deps chromium firefox webkit
+npm ci
+npx playwright install --with-deps chromium firefox webkit
