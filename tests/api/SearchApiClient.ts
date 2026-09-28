@@ -6,6 +6,20 @@ export interface ApiProduct {
   price: number;
 }
 
+interface RawSearchRecord {
+  productId: string;
+  title: string;
+  priceInfo?: {
+    salePrice?: number;
+  };
+}
+
+interface RawSearchResponse {
+  data?: {
+    records?: RawSearchRecord[];
+  };
+}
+
 const SEARCH_API_PATTERN = '/api/plp/search';
 
 /**
@@ -28,12 +42,12 @@ export function watchForSearchApiResponse(page: Page): Promise<Response> {
  * simplificada de productos: id, nombre y precio vigente (salePrice).
  */
 export async function extractApiProducts(response: Response): Promise<ApiProduct[]> {
-  const json = await response.json();
+  const json = (await response.json()) as RawSearchResponse;
   const records = json?.data?.records ?? [];
 
-  return records.map((record: any) => ({
+  return records.map((record) => ({
     productId: record.productId,
     name: record.title,
-    price: record.priceInfo?.salePrice,
+    price: record.priceInfo?.salePrice ?? NaN,
   }));
 }
