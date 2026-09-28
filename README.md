@@ -4,7 +4,7 @@
 
 Suite de pruebas automatizadas E2E para la plataforma de **Liverpool.com.mx** desarrollada con **Playwright** y **TypeScript**.
 
-El proyecto automatiza el flujo completo de búsqueda de productos (*PlayStation 5*), filtrado por color (*Blanco*), ordenamiento por precio (*Mayor a menor*), extracción de los primeros 5 resultados y validación cruzada de datos contra la respuesta interceptada de la red (API).
+El proyecto automatiza el flujo completo de búsqueda de productos (*PlayStation 5*), filtrado por color (*Blanco*), ordenamiento por precio (*Menor a mayor*), extracción de los primeros 5 resultados y validación cruzada de datos contra la respuesta interceptada de la red (API).
 
 ---
 
